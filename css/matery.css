@@ -241,7 +241,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #ffccff 0%, #ff99ff 20%, #ff66cc 40%, #ff33cc 60%, #ff00cc 100%);
+    background-image: linear-gradient(to right, #ff1a95 0%, #d83daa 20%, #b555bf 40%, #9267d1 60%, #5b7fec 80%, #1f90ff 100%);
 }
 
 .text-color {
@@ -257,7 +257,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #ffccff 0%, #ff99ff 20%, #ff66cc 40%, #ff33cc 60%, #ff00cc 100%);
+    background: linear-gradient(to right, #ff1a95 0%, #d83daa 20%, #b555bf 40%, #9267d1 60%, #5b7fec 80%, #1f90ff 100%);
     opacity: 0.8;
 }
 
@@ -1317,7 +1317,7 @@ thead {
 
 .chip-container .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #ffccff 0%, #ff99ff 20%, #ff66cc 40%, #ff33cc 60%, #ff00cc 100%) !important;
+    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%) !important;
 }
 
 .chip .tag-length {
@@ -1806,7 +1806,7 @@ thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #ffccff 0%, #ff99ff 20%, #ff66cc 40%, #ff33cc 60%, #ff00cc 100%);
+    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
     border: 1px solid #ff99ff;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
