@@ -396,7 +396,7 @@ Github创建个人仓库
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2.1k
                 </div>
                 
 
@@ -582,6 +582,14 @@ hexo clean <span class="token operator">&amp;&amp;</span> hexo g <span class="to
 
 <span class="token comment">##强制推送</span>
 <span class="token function">git</span> push -f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="备份博客源文件">备份博客源文件</h2>
+<p>有时候我们想换一台电脑继续写博客，这时候就可以将博客目录下的所有源文件都上传到github上面。</p>
+<p>首先在github上新建一个仓库专门放源文件，然后<code>git clone</code>到本地，将需要上传的文件放入clone出来的文件夹里，然后<code>git add .</code>将文件添加到缓存区， “.” 代表提交文件夹下的所有文件目录，也可以通过 <code>git add 文件名</code> 提交指定的文件。<code>git commit -m "注释"</code>，提交添加到缓存区到文件， <code>git push origin master</code> 把本地库的所有内容推送到远程仓库（github）上，即上传本地文件，如果显示下图，则说明上传成功。</p>
+<p><img src="/images/git-push.png" alt="git push上传成功"></p>
+<p>大家感兴趣可以在 <a target="_blank" rel="noopener" href="https://github.com/ljq0067/hexo-matery-blog">我的博客源代码</a> 处查看具体效果。</p>
+<br>
+或者可以在github博客仓库下新建一个分支hexo，然后`git clone`到本地，把`.git`文件夹拿出来，放在博客根目录下。
+<p>然后<code>git branch -b hexo</code>切换到hexo分支，然后<code>git add .</code>，然后<code>git commit -m "xxx"</code>，最后<code>git push origin hexo</code>提交就行了。</p>
 <h2 id="参考文献">参考文献</h2>
 <blockquote>
 <p>Git安装：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a><br>
@@ -965,6 +973,43 @@ Hexo 部署出现错误 Spawn failed解决方式: <a target="_blank" rel="noopen
 
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Jieqian&#39;s Blog<br />'
+            + '文章作者: Jieqian Liu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
 <!-- 代码块功能依赖 -->
