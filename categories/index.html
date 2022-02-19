@@ -280,11 +280,11 @@
                 
                 
                 
-                <a href="/categories/blog/" title="blog: 1">
+                <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="个人博客: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">blog
-                        <span class="tag-length">1</span>
+                            style="background-color: #F9EBEA;">个人博客
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -293,15 +293,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F5EEF8;">mac使用
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="个人博客: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">个人博客
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -349,7 +340,7 @@
                         color: '#3C4858'
                     }
                 },
-                indicator: [{"name":"blog","max":2},{"name":"mac使用","max":2},{"name":"个人博客","max":2}],
+                indicator: [{"name":"个人博客","max":3},{"name":"mac使用","max":3}],
                 nameGap: 5,
                 center: ['50%','55%'],
                 radius: '66%'
@@ -360,7 +351,7 @@
                 itemStyle: {normal: {areaStyle: {type: 'default'}}},
                 data : [
                     {
-                        value : [1,1,1],
+                        value : [2,1],
                         name : '文章分类数量'
                     }
                 ]
@@ -667,6 +658,14 @@ $(function () {
 <script src="/js/matery.js"></script>
 
 
+    <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+    <script src='/libs/mermaid/mermaid.min.js'></script>
+    <script>
+        if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+        }
+    </script>
+
 
 
 
@@ -736,12 +735,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
 
 
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                preloadRatio: 1,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 
 </html>

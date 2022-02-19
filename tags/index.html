@@ -297,10 +297,19 @@
                 </a>
                 
                 
+                <a href="/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="搭建博客: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="搭建博客" style="background-color: #D5F5E3;">搭建博客
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/mac/" title="mac: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="mac" style="background-color: #D5F5E3;">mac
+                            data-tagname="mac" style="background-color: #E8F8F5;">mac
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -309,7 +318,7 @@
                 <a href="/tags/hexo-theme-matery/" title="hexo-theme-matery: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="hexo-theme-matery" style="background-color: #E8F8F5;">hexo-theme-matery
+                            data-tagname="hexo-theme-matery" style="background-color: #FEF9E7;">hexo-theme-matery
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -338,7 +347,7 @@
     $.getScript("/libs/jqcloud/jqcloud-1.0.4.min.js",function () {
         
 
-        $('#tag-wordcloud').jQCloud([{"text":"Hexo","weight":2,"link":"/tags/Hexo/"},{"text":"Github","weight":1,"link":"/tags/Github/"},{"text":"mac","weight":1,"link":"/tags/mac/"},{"text":"hexo-theme-matery","weight":1,"link":"/tags/hexo-theme-matery/"}], {
+        $('#tag-wordcloud').jQCloud([{"text":"Hexo","weight":2,"link":"/tags/Hexo/"},{"text":"Github","weight":1,"link":"/tags/Github/"},{"text":"搭建博客","weight":1,"link":"/tags/搭建博客/"},{"text":"mac","weight":1,"link":"/tags/mac/"},{"text":"hexo-theme-matery","weight":1,"link":"/tags/hexo-theme-matery/"}], {
             autoResize: true
         });
     })
@@ -640,6 +649,14 @@ $(function () {
 <script src="/js/matery.js"></script>
 
 
+    <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+    <script src='/libs/mermaid/mermaid.min.js'></script>
+    <script>
+        if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+        }
+    </script>
+
 
 
 
@@ -709,12 +726,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
 
 
-<script>
-            window.imageLazyLoadSetting = {
-                isSPA: false,
-                preloadRatio: 1,
-                processImages: null,
-            };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</body>
 
 </html>
