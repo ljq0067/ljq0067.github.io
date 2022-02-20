@@ -1945,9 +1945,7 @@ p.search-result-summary{
 .fa-moon:before {
     content: "\f186";
 }
-.fa-comments:before {
-    content: "\f086";
-}
+
 
 @media screen and (min-width: 368px) and (max-width: 767px) {
     .info-break-policy {

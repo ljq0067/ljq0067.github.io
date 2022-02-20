@@ -173,17 +173,7 @@ $(function () {
 /* 深色模式按钮设置 */
 if (localStorage.getItem("dark") === "1") {
     document.body.classList.add("dark");
-} else {
-    /*定时开启暗色模式<默认晚22点至早6点默认开启>*/
-    if (new Date().getHours() >= 22 || new Date().getHours() < 6) {
-        document.body.classList.add("dark");
-        $("#nightMode").removeClass("fa-moon-o").addClass("fa-lightbulb");
-    } else {
-        if (matchMedia("(prefers-color-scheme: dark)").matches) {
-            document.body.classList.add("dark");
-        }
-    }
-}
+} 
 
 /*提醒开启功能*/
 setTimeout(function () {
