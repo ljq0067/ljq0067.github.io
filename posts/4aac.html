@@ -1109,7 +1109,9 @@ Hexo 部署出现错误 Spawn failed解决方式: <a target="_blank" rel="noopen
 
 <script>
     $.getScript("/libs/valine/av-min.js", function () {
-        $.getScript("/libs/valine/Valine.min.js", function () {
+        $.getScript("https://unpkg.com/valine/dist/Valine.min.js", function () {
+            let metaPlaceholder = '{"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"}' ;
+            //这里要换行
             new Valine({
                 el: '#vcomments',
                 appId: 'F5k86PbaTap5E3mWnYN2LB6P-gzGzoHsz',
@@ -1119,10 +1121,10 @@ Hexo 部署出现错误 Spawn failed解决方式: <a target="_blank" rel="noopen
                 visitor: 'true' === 'true',
                 avatar: 'robohash',
                 pageSize: '10',
-                lang: 'zh-cn',
+                lang: 'zh-CN',
                 placeholder: '说点什么吧～just go go',
-                guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
-                serverURLs: 'https://F5k86Pba.api.lncldglobal.com'
+                recordIP: '' === 'true',
+                metaPlaceholder: metaPlaceholder
             });
 
         })
@@ -1149,13 +1151,13 @@ Hexo 部署出现错误 Spawn failed解决方式: <a target="_blank" rel="noopen
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/dda0.html">
+                <a href="/posts/9268.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Hexo博客主题之hexo-theme-matery的介绍">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Hexo博客主题之matery的配置">
                         
-                        <span class="card-title">Hexo博客主题之hexo-theme-matery的介绍</span>
+                        <span class="card-title">Hexo博客主题之matery的配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

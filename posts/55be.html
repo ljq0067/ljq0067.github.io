@@ -906,7 +906,9 @@ https://support.apple.com/zh-cn/HT201">
 
 <script>
     $.getScript("/libs/valine/av-min.js", function () {
-        $.getScript("/libs/valine/Valine.min.js", function () {
+        $.getScript("https://unpkg.com/valine/dist/Valine.min.js", function () {
+            let metaPlaceholder = '{"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"}' ;
+            //这里要换行
             new Valine({
                 el: '#vcomments',
                 appId: 'F5k86PbaTap5E3mWnYN2LB6P-gzGzoHsz',
@@ -916,10 +918,10 @@ https://support.apple.com/zh-cn/HT201">
                 visitor: 'true' === 'true',
                 avatar: 'robohash',
                 pageSize: '10',
-                lang: 'zh-cn',
+                lang: 'zh-CN',
                 placeholder: '说点什么吧～just go go',
-                guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
-                serverURLs: 'https://F5k86Pba.api.lncldglobal.com'
+                recordIP: '' === 'true',
+                metaPlaceholder: metaPlaceholder
             });
 
         })
