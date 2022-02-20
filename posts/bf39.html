@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.8k
                 </div>
                 
 
@@ -628,12 +628,141 @@ content
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- Weather Widget --&gt;</span> 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><span class="token constant">WIDGET</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token constant">FID</span><span class="token operator">:</span> <span class="token string">'your FID'</span><span class="token punctuation">}</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span> 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://apip.weatherdt.com/float/static/js/r.js?v=1111<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="参考文章">参考文章</h2>
+<h2 id="图标绘制插件">图标绘制插件</h2>
+<p>因为 Hexo 有默认的标记渲染器插件<code>marked</code>，所以需要在博客目录下先删除再安装：</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 删除默认插件
+npm un hexo-renderer-marked --save
+# 安装 hexo-rengderer-markdown-it
+npm i hexo-renderer-markdown-it --save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后在主题配置文件找到<code>mermaid</code>，将<code>enable</code>值改为True即可。</p>
+<p>在post文章中填写mermaid语句，需要使用一下语法包裹:</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">{% mermaid %}
+[mermaid 语句正文]
+{% endmermaid %}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<div class="mermaid">
+     graph LR
+      A --- B
+      B--&gt;C[fa:fa-ban forbidden]
+      B--&gt;D(fa:fa-spinner);
+</div>
+<p>下面是一些使用 Mermaid 和类 Markdown 语法创建的图表示例，关于 Mermaid 的语法结构，可以看它们的<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/n00b-syntaxReference">官方文档</a>介绍了各种图表的画法。</p>
+ <table>
+<!-- <Flowchart> -->
+<tbody><tr><td colspan="2" align="center">
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/flowchart">流程图</a>]
+</td></tr>
+<tr>
+    <td><pre>flowchart TD
+A[Hard] --&gt;|Text| B(Round)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result 1]
+C --&gt;|Two| E[Result 2]
+    </pre></td>
+    <td align="center">
+        <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/master/img/gray-flow.png">
+    </td>
+</tr>
+<!-- <Sequence> -->
+<tr><td colspan="2" align="center">
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/sequenceDiagram">时序图</a>
+</td></tr>
+<tr>
+    <td><pre>sequenceDiagram
+Alice-&gt;&gt;John: Hello John, how are you?
+loop Healthcheck
+    John-&gt;&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts!
+John--&gt;&gt;Alice: Great!
+John-&gt;&gt;Bob: How about you?
+Bob--&gt;&gt;John: Jolly good!
+    </pre></td>
+    <td align="center">
+        <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/master/img/gray-sequence.png">
+    </td>
+</tr>
+<!-- <Gantt> -->
+<tr><td colspan="2" align="center">
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/gantt">甘特图</a>
+</td></tr><tr>
+    <td><pre>gantt
+section Section
+Completed :done,    des1, 2014-01-06,2014-01-08
+Active        :active,  des2, 2014-01-07, 3d
+Parallel 1   :         des3, after des1, 1d
+Parallel 2   :         des4, after des1, 1d
+Parallel 3   :         des5, after des3, 1d
+Parallel 4   :         des6, after des4, 1d
+    </pre></td>
+    <td align="center">
+        <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/master/img/gray-gantt.png">
+    </td>
+</tr>
+<!-- <Class> -->
+<tr><td colspan="2" align="center">
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/classDiagram">类图</a>
+</td></tr>
+<tr>
+    <td><pre>classDiagram
+Class01 &lt;|-- AveryLongClass : Cool
+&lt;&lt;interface&gt;&gt; Class01
+Class09 --&gt; C2 : Where am i?
+Class09 --* C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+class Class10 {
+  &lt;&lt;service&gt;&gt;
+  int id
+  size()
+}
+</pre></td>
+    <td align="center">
+        <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/master/img/gray-class.png">
+    </td>
+</tr>
+<!-- <State> -->
+<tr><td colspan="2" align="center">
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/stateDiagram">状态图</a>
+</td></tr>
+<tr>
+    <td><pre>stateDiagram-v2
+[*] --&gt; Still
+Still --&gt; [*]
+Still --&gt; Moving
+Moving --&gt; Still
+Moving --&gt; Crash
+Crash --&gt; [*]
+</pre></td>
+    <td align="center">
+        <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/master/img/gray-state.png">
+    </td>
+</tr>
+<!-- <Pie> -->
+<tr><td colspan="2" align="center">
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/pie">饼图</a>
+</td></tr>
+<tr>
+    <td><pre>pie
+"Dogs" : 386
+"Cats" : 85
+"Rats" : 15
+</pre></td>
+    <td align="center">
+        <img src="https://raw.githubusercontent.com/mermaid-js/mermaid/master/img/gray-pie.png">
+    </td>
+</tr>
+</tbody></table>
+<h2 id="参考文章-2">参考文章</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">源主题文档</a><br>
 <a target="_blank" rel="noopener" href="https://yafine-blog.cn/posts/4ab2.html">Hexo+Github 搭建博客</a><br>
 <a target="_blank" rel="noopener" href="https://blog.17lai.site/posts/40300608/">夜法之光</a><br>
-<a target="_blank" rel="noopener" href="https://qvchuang.top/archives/d3c10307.html">matery 主题个性化定制</a></p>
+<a target="_blank" rel="noopener" href="https://qvchuang.top/archives/d3c10307.html">matery 主题个性化定制</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/mermaid-js/mermaid/edit/develop/README.zh-CN.md">Mermaid</a></p>
 </blockquote>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
@@ -898,52 +1027,46 @@ content
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/bf39.html">
+                <a href="/posts/55be.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hexo博客主题之matery的美化">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="mac command">
                         
-                        <span class="card-title">Hexo博客主题之matery的美化</span>
+                        <span class="card-title">mac command</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo 博客 matery 主题个性化修改
+                            新换了苹果电脑，一下子不习惯它的操作，记录一下 Mac 的一些快捷键指令。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    个人博客
+                            <a href="/categories/mac%E4%BD%BF%E7%94%A8/" class="post-category">
+                                    mac使用
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">搭建博客</span>
+                    <a href="/tags/mac/">
+                        <span class="chip bg-color">mac</span>
                     </a>
                     
                 </div>

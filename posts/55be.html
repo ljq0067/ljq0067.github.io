@@ -5,14 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="mac command, Jieqian&#39;s Blog">
-    <meta name="description" content="Common command
-Command-X 剪切
-
-sleep and shut down
-Control-Command-Q 锁定屏幕
-
-reference
-https://support.apple.com/zh-cn/HT201">
+    <meta name="description" content="新换了苹果电脑，一下子不习惯它的操作，记录一下 Mac 的一些快捷键指令。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -386,21 +379,21 @@ https://support.apple.com/zh-cn/HT201">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-17
+                    2022-02-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-19
+                    2022-02-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    25
+                    462
                 </div>
                 
 
@@ -425,14 +418,46 @@ https://support.apple.com/zh-cn/HT201">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Common-command">Common command</h2>
+                <blockquote>
+<p>最近新换了苹果电脑，一下子不习惯它的操作，记录一下 Mac 的一些快捷键指令。</p>
+</blockquote>
+<p>要使用键盘快捷键，请按住一个或多个修饰键，然后按快捷键的最后一个键。例如，要使用 Command-C（拷贝），请按住 Command 键并按 C 键，然后同时松开这两个键。Mac 菜单和键盘通常使用符号来表示某些按键，其中包括以下修饰键：<br>
+Command（或 Cmd）⌘<br>
+Shift ⇧<br>
+Option（或 Alt）⌥<br>
+Control（或 Ctrl）⌃<br>
+Caps Lock ⇪<br>
+Fn</p>
+<h2 id="Common-command">Common command</h2>
 <p>Command-X 剪切</p>
-<hr>
 <h2 id="sleep-and-shut-down">sleep and shut down</h2>
 <p>Control-Command-Q 锁定屏幕</p>
+<h2 id="快速新建-txt-文本文件">快速新建 txt 文本文件</h2>
+<h3 id="直接拖拽文本至文件夹">直接拖拽文本至文件夹</h3>
+<p>如果你只是想将其它地方的文字粘贴至一个新文档，可以试试选中文本后直接将其拖拽至桌面或其它文件夹，Finder 就会为你自动生成一个新文件，十分方便。</p>
+<h3 id="通过-Automator-创建服务">通过 Automator 创建服务</h3>
+<p>利用 macOS 自带的 应用程序 Automator，我们可以将「新建文本文件」这一动作添加至 Finder 的「服务」菜单中，便于随时调用。</p>
+<p>首先，打开 application/Automator 并创建一个新文稿，类型选择「服务」。</p>
+<p><img src="%5Cimages%5Cautomator.png" alt="automator"></p>
+<p>随后，在 Automator 上方将输入类型设置为「没有输入」，并选择应用程序为「Finder」。</p>
+<p><img src="%5Cimages%5Cchoose.png" alt="choose"></p>
+<p>接着，从左侧资源库的「实用工具」分类中将「运行 AppleScript」操作拖拽至右侧的动作区，在其中粘贴以下代码并保存。</p>
+<p><img src="%5Cimages%5Capplescript.png" alt="applescript"></p>
+<pre class="line-numbers language-none"><code class="language-none">on run {input, parameters}
+
+    tell application "Finder"
+    set selection to make new file at (get insertion location)
+    end tell
+
+    return input
+end run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这时，你应该就能在打开 Finder 后的左上角的「服务」菜单中找到「新建文本文件」这一操作了。只需要点击运行服务，就可以在当前位置创建一个新文本文件。</p>
+<p><img src="%5Cimages%5Cnewfile.gif" alt="create new file"></p>
 <hr>
 <h2 id="reference">reference</h2>
-<p><a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT201236">https://support.apple.com/zh-cn/HT201236</a></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT201236">Mac键盘快捷键</a></p>
+</blockquote>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -692,28 +717,80 @@ https://support.apple.com/zh-cn/HT201">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/4aac.html">
+                <a href="/posts/55be.html">
                     <div class="card-image">
                         
-                        <img src="/cover-images/github+hexo.jpg" class="responsive-img" alt="Github+Hexo搭建个人博客过程">
                         
-                        <span class="card-title">Github+Hexo搭建个人博客过程</span>
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="mac command">
+                        
+                        <span class="card-title">mac command</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            历时三天，终于搭建好了博客，记录一下过程和遇到的问题！
+                            新换了苹果电脑，一下子不习惯它的操作，记录一下 Mac 的一些快捷键指令。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-17
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/mac%E4%BD%BF%E7%94%A8/" class="post-category">
+                                    mac使用
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mac/">
+                        <span class="chip bg-color">mac</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/bf39.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hexo博客主题之matery的美化">
+                        
+                        <span class="card-title">Hexo博客主题之matery的美化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Hexo 博客 matery 主题个性化修改
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -735,60 +812,6 @@ https://support.apple.com/zh-cn/HT201">
                     
                     <a href="/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
                         <span class="chip bg-color">搭建博客</span>
-                    </a>
-                    
-                    <a href="/tags/Github/">
-                        <span class="chip bg-color">Github</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/55be.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="mac command">
-                        
-                        <span class="card-title">mac command</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/mac%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    mac使用
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/mac/">
-                        <span class="chip bg-color">mac</span>
                     </a>
                     
                 </div>
