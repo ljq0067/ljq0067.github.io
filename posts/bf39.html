@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.9k
                 </div>
                 
 
@@ -635,16 +635,21 @@ npm un hexo-renderer-marked --save
 # 安装 hexo-rengderer-markdown-it
 npm i hexo-renderer-markdown-it --save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后在主题配置文件找到<code>mermaid</code>，将<code>enable</code>值改为True即可。</p>
-<p>在post文章中填写mermaid语句，需要使用一下语法包裹:</p>
+<p>在post文章中填写mermaid语句，需要使用mermaid语法包裹:</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">{% mermaid %}
-[mermaid 语句正文]
-{% endmermaid %}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+graph LR
+  A --- B
+  B--&gt;C[fa:fa-ban forbidden]
+  B--&gt;D(fa:fa-spinner);
+{% endmermaid %}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>效果如下图所示“</p>
 <div class="mermaid">
-     graph LR
-      A --- B
-      B--&gt;C[fa:fa-ban forbidden]
-      B--&gt;D(fa:fa-spinner);
+  graph LR
+  A --- B
+  B--&gt;C[fa:fa-ban forbidden]
+  B--&gt;D(fa:fa-spinner);
 </div>
+
 <p>下面是一些使用 Mermaid 和类 Markdown 语法创建的图表示例，关于 Mermaid 的语法结构，可以看它们的<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/n00b-syntaxReference">官方文档</a>介绍了各种图表的画法。</p>
  <table>
 <!-- <Flowchart> -->
@@ -664,7 +669,7 @@ C --&gt;|Two| E[Result 2]
 </tr>
 <!-- <Sequence> -->
 <tr><td colspan="2" align="center">
-    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/sequenceDiagram">时序图</a>
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/sequenceDiagram">时序图</a>]
 </td></tr>
 <tr>
     <td><pre>sequenceDiagram
@@ -683,7 +688,7 @@ Bob--&gt;&gt;John: Jolly good!
 </tr>
 <!-- <Gantt> -->
 <tr><td colspan="2" align="center">
-    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/gantt">甘特图</a>
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/gantt">甘特图</a>]
 </td></tr><tr>
     <td><pre>gantt
 section Section
@@ -700,7 +705,7 @@ Parallel 4   :         des6, after des4, 1d
 </tr>
 <!-- <Class> -->
 <tr><td colspan="2" align="center">
-    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/classDiagram">类图</a>
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/classDiagram">类图</a>]
 </td></tr>
 <tr>
     <td><pre>classDiagram
@@ -726,7 +731,7 @@ class Class10 {
 </tr>
 <!-- <State> -->
 <tr><td colspan="2" align="center">
-    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/stateDiagram">状态图</a>
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/stateDiagram">状态图</a>]
 </td></tr>
 <tr>
     <td><pre>stateDiagram-v2
@@ -743,7 +748,7 @@ Crash --&gt; [*]
 </tr>
 <!-- <Pie> -->
 <tr><td colspan="2" align="center">
-    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/pie">饼图</a>
+    [<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/pie">饼图</a>]
 </td></tr>
 <tr>
     <td><pre>pie
@@ -756,7 +761,7 @@ Crash --&gt; [*]
     </td>
 </tr>
 </tbody></table>
-<h2 id="参考文章-2">参考文章</h2>
+<h2 id="参考文章">参考文章</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">源主题文档</a><br>
 <a target="_blank" rel="noopener" href="https://yafine-blog.cn/posts/4ab2.html">Hexo+Github 搭建博客</a><br>
