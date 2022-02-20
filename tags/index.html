@@ -29,27 +29,6 @@
     <link rel="stylesheet" type="text/css" href="/css/dark.css">
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    <script type="text/javascript">
-        // Wait for the page to load first
-        var _prevOnload = window.onload;
-        window.onload = function() {
-            var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
-            switchLang.onclick = function() {
-                var href = window.location.href;
-                var indexOfEn = href.toLowerCase().indexOf('/en/');
-                if(indexOfEn !== -1) {
-                    window.location.href = href.replace('/en/', '/');
-                }
-                else {
-                    window.location.href = href.replace(/(^http[s]?:\/\/[a-z0-9.]*[:?0-9]*\/)(.*)/i, '$1en/$2');
-                }
-                if(typeof(_prevOnload) === 'function') {
-                    _prevOnload();
-                }
-                return false;
-            }
-        }
-      </script>j
 <meta name="generator" content="Hexo 6.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -148,15 +127,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <span>English</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -245,17 +215,6 @@
           
         </li>
         
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-				<i class="fas fa-fw fa-link"></i>
-			
-			English
-		</a>
-          
-        </li>
-        
         
     </ul>
 </div>
@@ -324,19 +283,10 @@
                 </a>
                 
                 
-                <a href="/tags/Github/" title="Github: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Github" style="background-color: #F5EEF8;">Github
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="搭建博客: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="搭建博客" style="background-color: #D5F5E3;">搭建博客
+                            data-tagname="搭建博客" style="background-color: #F5EEF8;">搭建博客
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -345,7 +295,16 @@
                 <a href="/tags/mac/" title="mac: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="mac" style="background-color: #E8F8F5;">mac
+                            data-tagname="mac" style="background-color: #D5F5E3;">mac
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Github/" title="Github: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Github" style="background-color: #E8F8F5;">Github
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -374,7 +333,7 @@
     $.getScript("/libs/jqcloud/jqcloud-1.0.4.min.js",function () {
         
 
-        $('#tag-wordcloud').jQCloud([{"text":"Hexo","weight":3,"link":"/tags/Hexo/"},{"text":"Github","weight":1,"link":"/tags/Github/"},{"text":"搭建博客","weight":3,"link":"/tags/搭建博客/"},{"text":"mac","weight":1,"link":"/tags/mac/"}], {
+        $('#tag-wordcloud').jQCloud([{"text":"Hexo","weight":3,"link":"/tags/Hexo/"},{"text":"搭建博客","weight":3,"link":"/tags/搭建博客/"},{"text":"mac","weight":1,"link":"/tags/mac/"},{"text":"Github","weight":1,"link":"/tags/Github/"}], {
             autoResize: true
         });
     })
