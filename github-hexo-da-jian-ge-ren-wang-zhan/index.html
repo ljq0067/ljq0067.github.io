@@ -40,6 +40,16 @@ Github创建个人仓库
 
 
 
+    <style>
+    body{
+       background-image: url(/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
 <header class="navbar-fixed">
@@ -396,7 +406,7 @@ Github创建个人仓库
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.4k
                 </div>
                 
 
@@ -584,19 +594,40 @@ hexo clean <span class="token operator">&amp;&amp;</span> hexo g <span class="to
 <span class="token function">git</span> push -f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="备份博客源文件">备份博客源文件</h2>
 <p>有时候我们想换一台电脑继续写博客，这时候就可以将博客目录下的所有源文件都上传到github上面。</p>
-<p>首先在github上新建一个仓库专门放源文件，然后<code>git clone</code>到本地，将需要上传的文件放入clone出来的文件夹里，然后<code>git add .</code>将文件添加到缓存区， “.” 代表提交文件夹下的所有文件目录，也可以通过 <code>git add 文件名</code> 提交指定的文件。<code>git commit -m "注释"</code>，提交添加到缓存区到文件， <code>git push origin master</code> 把本地库的所有内容推送到远程仓库（github）上，即上传本地文件，如果显示下图，则说明上传成功。</p>
+<p>首先在github上新建一个仓库专门放源文件，然后<code>git clone</code>到本地，将需要上传的文件放入clone出来的文件夹里，然后<code>git add .</code>将文件添加到缓存区， “.” 代表提交文件夹下的所有文件目录，也可以通过 <code>git add 文件名</code> 提交指定的文件。<code>git commit -m "注释"</code>，提交添加到缓存区到文件， <code>git push origin main</code> 把本地库的所有内容推送到远程仓库（github）上，即上传本地文件，如果显示下图，则说明上传成功。</p>
 <p><img src="/images/git-push.png" alt="git push上传成功"></p>
 <p>大家感兴趣可以在 <a target="_blank" rel="noopener" href="https://github.com/ljq0067/hexo-matery-blog">我的博客源代码</a> 处查看具体效果。</p>
 <br>
 或者可以在github博客仓库下新建一个分支hexo，然后`git clone`到本地，把`.git`文件夹拿出来，放在博客根目录下。
 <p>然后<code>git branch -b hexo</code>切换到hexo分支，然后<code>git add .</code>，然后<code>git commit -m "xxx"</code>，最后<code>git push origin hexo</code>提交就行了。</p>
+<br>
+这样之后使用只需要先用上文hexo安装方法安装完hexo，搭好环境，然后直接`git clone <github ssh地址="">`克隆所有源文件，就可以直接拿来用啦。
+<h3 id="主题文件夹无法提交到-Github-的解决方法">主题文件夹无法提交到 Github 的解决方法</h3>
+<p>如果使用<code>git clone xxx</code> 下载了源文件，会出现主题 themes/文件夹 无法提交到Github到问题，因为 themes/matery 也是从仓库里拉取下来的 它关联到了作者的git仓库。下面是解决方法：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 从暂存区删除该文件夹</span>
+<span class="token function">git</span> <span class="token function">rm</span> --cache themes/主题文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如果是Mac电脑，看不到.git文件夹是因为这个文件夹被隐藏掉了。输入一下命令查看隐藏文件并恢复隐藏设置：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 显示文件夹</span>
+defaults <span class="token function">write</span> com.apple.finder AppleShowAllFiles TRUE
+<span class="token comment">#重启Finder</span>
+<span class="token function">killall</span> Finder
+
+<span class="token comment"># 隐藏文件夹</span>
+defaults <span class="token function">write</span> com.apple.finder AppleShowAllFiles TRUE
+<span class="token comment">#重启Finder</span>
+<span class="token function">killall</span> Finder<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>把<code>themes/matery/.git</code>文件夹到放到其他位置，比方说桌面。如果有请记得把<code>themes/matery/.gitignore</code>里的 _config 去掉。然后直接按步骤提交就行了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit -m <span class="token string">"add themes"</span>
+<span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>后面再把刚刚到 .git 文件夹移动回去。</p>
 <h2 id="参考文献">参考文献</h2>
 <blockquote>
 <p>Git安装：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a><br>
 homebrew: <a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a><br>
 Hexo 部署出现错误 Spawn failed解决方式: <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c60ad2a33a1e">https://www.jianshu.com/p/c60ad2a33a1e</a></p>
 </blockquote>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+</github><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
@@ -827,28 +858,276 @@ Hexo 部署出现错误 Spawn failed解决方式: <a target="_blank" rel="noopen
     
 
     
-    <div class="livere-card card" data-aos="fade-up">
-    <!-- 来必力City版安装代码 -->
-    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC81NTUzNi8zMjAwMw==">
-        <script type="text/javascript">
-            (function (d, s) {
-                let j, e = d.getElementsByTagName(s)[0];
-                if (typeof LivereTower === 'function') {
-                    return;
-                }
 
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
-    </div>
-    <!-- City版安装代码已完成 -->
-</div>
     
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+         style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script>
+    $.getScript("/libs/valine/av-min.js", function () {
+        $.getScript("/libs/valine/Valine.min.js", function () {
+            new Valine({
+                el: '#vcomments',
+                appId: 'F5k86PbaTap5E3mWnYN2LB6P-gzGzoHsz',
+                appKey: 'qis97deHr5NiUm6LJRsb2wrf',
+                notify: 'true' === 'true',
+                verify: 'false' === 'true',
+                visitor: 'true' === 'true',
+                avatar: 'robohash',
+                pageSize: '10',
+                lang: 'zh-cn',
+                placeholder: '说点什么吧～just go go'
+            });
+
+        })
+    })
+</script>
+
+<!--酷Q推送-->
+
 
     
 
